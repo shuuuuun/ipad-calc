@@ -17,11 +17,6 @@ class ViewController: UIViewController {
         "Minus": 3,
         "Plus": 4,
     ]
-    
-//    var numberOnScreen:Double = 0
-//    var previousNumber:Double = 0
-//    var performingMath = false
-//    var operation = 0
 
     var viewerNum:String = "0"
     var currentNum:Double = 0
@@ -33,88 +28,81 @@ class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
 
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
-        let dotStr:String = isDot ? "." : ""
+         let dotStr:String = isDot ? "." : ""
         isDot = false
         if operatorType == OperatorTypes["Null"] {
-            operand1 = Double(label.text! + dotStr + String(sender.tag))!
-            let floorNum = floor(operand1)
-            // if abs(operand1.truncatingRemainder(dividingBy: 1.0)).isLess(than: .ulpOfOne) {
-            if operand1 == floorNum {
-                viewerNum = String(format: "%.0f", operand1)
-            }
-            else {
-                viewerNum = String(operand1)
-            }
-            label.text = viewerNum
-//            label.text = String(operand1)
-//            label.text = String(format: "%.1f", operand1)
-//            let formatter = NumberFormatter()
-//            formatter.numberStyle = .decimal
-//            formatter.maximumFractionDigits = 2
-//            formatter.positiveFormat = "0.##" // "0.##" -> 0パディングしない
-//            var str:String = formatter.string(from: NSNumber(operand1))!
-//            label.text = str
+            // let numStr = isDot ? String(format: "%.0f", operand1) : String(operand1)
+            // operand1 = Double(label.text! + dotStr + String(sender.tag))!
+            // operand1 = Double(viewerNum + dotStr + String(sender.tag))!
+            operand1 = Double(viewerNum + String(sender.tag))!
+            // operand1 = Double(label.text! + String(sender.tag))!
+            NSLog(String(operand1))
+            NSLog(viewerNum + String(sender.tag))
+            // drawNum(operand1)
+            drawNum(viewerNum + String(sender.tag))
         }
-//        if performingMath == true {
-//            label.text = String(sender.tag-1)
-//            numberOnScreen = Double(label.text!)!
-//            performingMath = false
-//        }
-//        else {
-//            label.text = label.text! + String(sender.tag-1)
-//            numberOnScreen = Double(label.text!)!
-//        }
+        else {
+            // let numStr = isDot ? String(format: "%.0f", operand2) : String(operand2)
+            // operand2 = Double(label.text! + dotStr + String(sender.tag))!
+            // operand2 = Double(viewerNum + dotStr + String(sender.tag))!
+            // operand2 = Double(viewerNum + String(sender.tag))!
+            // operand2 = Double(label.text! + String(sender.tag))!
+            let numStr = String(format: "%.0f", operand2)
+            operand2 = Double(numStr + String(sender.tag))!
+            drawNum(numStr + String(sender.tag))
+        }
     }
 
     @IBAction func btnOparatorOnClicked(_ sender: UIButton) {
-        if sender.tag == OperatorTypes["DividedBy"] { // Devide
-            label.text = "/"
-        }
-        else if sender.tag == OperatorTypes["Times"] { // Multiply
-            label.text = "x"
-        }
-        else if sender.tag == OperatorTypes["Minus"] { // Minus
-            label.text = "-"
-        }
-        else if sender.tag == OperatorTypes["Plus"] { // Plus
-            label.text = "+"
-        }
-        operatorType = sender.tag
-//        if label.text != "" {
-//            previousNumber = Double(label.text!)!
-//            operation = sender.tag
-//            performingMath = true
+//        if sender.tag == OperatorTypes["DividedBy"] { // Devide
+//            label.text = "/"
 //        }
+//        else if sender.tag == OperatorTypes["Times"] { // Multiply
+//            label.text = "x"
+//        }
+//        else if sender.tag == OperatorTypes["Minus"] { // Minus
+//            label.text = "-"
+//        }
+//        else if sender.tag == OperatorTypes["Plus"] { // Plus
+//            label.text = "+"
+//        }
+        operatorType = sender.tag
     }
 
     @IBAction func btnClearOnClicked(_ sender: UIButton) {
-        label.text = "0"
-//        previousNumber = 0
-//        numberOnScreen = 0
-//        operation = 0
+        operand1 = 0
+        operand2 = 0
+        operatorType = 0
+        viewerNum = "0"
+        label.text = viewerNum
     }
     
+    @IBAction func btnDotOnClicked(_ sender: UIButton) {
+        let num = Double(viewerNum)!
+        if num != floor(num) { return }
+        viewerNum += "."
+        label.text = viewerNum
+        isDot = true
+    }
+
     @IBAction func btnEqualOnClicked(_ sender: UIButton) {
         if operatorType == OperatorTypes["Null"] { return }
         let result = calc(operand1, operatorType, operand2)
-        viewerNum = String(result)
+        drawNum(String(result))
         operand1 = result
         operand2 = 0
         operatorType = 0
-        label.text = viewerNum
+    }
 
-//        if operation == 12 {
-//            label.text = String(previousNumber / numberOnScreen)
-//        }
-//        else if operation == 12 {
-//            label.text = String(previousNumber * numberOnScreen)
-//        }
-//        else if operation == 12 {
-//            label.text = String(previousNumber - numberOnScreen)
-//        }
-//        else if operation == 12 {
-//            label.text = String(previousNumber + numberOnScreen)
-//        }
+    func drawNum(_ num: String) {
+        if Double(num) == floor(Double(num)!) {
+//            viewerNum = String(format: "%.0f", num)
+            viewerNum = String(format: "%.0f", floor(Double(num)!))
+        }
+        else {
+            viewerNum = String(num)
+        }
+        label.text = viewerNum
     }
 
     func calc(_ operand1: Double, _ operatorType: Int, _ operand2: Double) -> (Double) {
