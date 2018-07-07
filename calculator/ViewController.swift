@@ -77,6 +77,20 @@ class ViewController: UIViewController {
         label.text = viewerNum
     }
     
+    @IBAction func btnSignOnClicked(_ sender: UIButton) {
+        let num:Double
+        if operatorType == OperatorTypes["Null"] {
+            operand1 *= -1
+            num = operand1
+        }
+        else {
+            operand2 *= -1
+            num = operand2
+        }
+        viewerNum = String(format: "%.0f", num)
+        label.text = viewerNum
+    }
+
     @IBAction func btnDotOnClicked(_ sender: UIButton) {
         let num = Double(viewerNum)!
         if num != floor(num) { return }
