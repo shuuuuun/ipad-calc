@@ -29,27 +29,28 @@ class ViewController: UIViewController {
 
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
          let dotStr:String = isDot ? "." : ""
+//        if isDot {
+//            operand1 + "." + String(sender.tag)
+//        }
         isDot = false
         if operatorType == OperatorTypes["Null"] {
             // let numStr = isDot ? String(format: "%.0f", operand1) : String(operand1)
             // operand1 = Double(label.text! + dotStr + String(sender.tag))!
             // operand1 = Double(viewerNum + dotStr + String(sender.tag))!
-            operand1 = Double(viewerNum + String(sender.tag))!
-            // operand1 = Double(label.text! + String(sender.tag))!
-            NSLog(String(operand1))
-            NSLog(viewerNum + String(sender.tag))
-            // drawNum(operand1)
-            drawNum(viewerNum + String(sender.tag))
+//            operand1 = Double(viewerNum + String(sender.tag))!
+//            NSLog(String(operand1))
+//            NSLog(viewerNum + String(sender.tag))
+            let numStr = doubleToString(operand1)
+            operand1 = Double(numStr + dotStr + String(sender.tag))!
+            drawNum(doubleToString(operand1))
         }
         else {
             // let numStr = isDot ? String(format: "%.0f", operand2) : String(operand2)
             // operand2 = Double(label.text! + dotStr + String(sender.tag))!
             // operand2 = Double(viewerNum + dotStr + String(sender.tag))!
-            // operand2 = Double(viewerNum + String(sender.tag))!
-            // operand2 = Double(label.text! + String(sender.tag))!
-            let numStr = String(format: "%.0f", operand2)
-            operand2 = Double(numStr + String(sender.tag))!
-            drawNum(numStr + String(sender.tag))
+            let numStr = doubleToString(operand2)
+            operand2 = Double(numStr + dotStr + String(sender.tag))!
+            drawNum(doubleToString(operand2))
         }
     }
 
@@ -108,6 +109,17 @@ class ViewController: UIViewController {
         operatorType = 0
     }
 
+    func doubleToString(_ num:Double) -> (String) {
+        let str:String
+        if num == floor(num) {
+            str = String(format: "%.0f", num)
+        }
+        else {
+            str = String(num)
+        }
+        return str
+    }
+
     func drawNum(_ num: String) {
         if Double(num) == floor(Double(num)!) {
 //            viewerNum = String(format: "%.0f", num)
@@ -118,6 +130,10 @@ class ViewController: UIViewController {
         }
         label.text = viewerNum
     }
+
+//    func isCalculating() -> (Bool) {
+//        return operatorType != OperatorTypes["Null"]
+//    }
 
     func calc(_ operand1: Double, _ operatorType: Int, _ operand2: Double) -> (Double) {
 //        console.log(operand1, operatorType, operand2);
@@ -144,7 +160,4 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-
