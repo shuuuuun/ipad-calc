@@ -28,30 +28,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
 
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
-         let dotStr:String = isDot ? "." : ""
-//        if isDot {
-//            operand1 + "." + String(sender.tag)
-//        }
-        isDot = false
+        let dotStr:String = isDot ? "." : ""
         if operatorType == OperatorTypes["Null"] {
-            // let numStr = isDot ? String(format: "%.0f", operand1) : String(operand1)
-            // operand1 = Double(label.text! + dotStr + String(sender.tag))!
-            // operand1 = Double(viewerNum + dotStr + String(sender.tag))!
-//            operand1 = Double(viewerNum + String(sender.tag))!
 //            NSLog(String(operand1))
-//            NSLog(viewerNum + String(sender.tag))
             let numStr = doubleToString(operand1)
             operand1 = Double(numStr + dotStr + String(sender.tag))!
             drawNum(doubleToString(operand1))
         }
         else {
-            // let numStr = isDot ? String(format: "%.0f", operand2) : String(operand2)
-            // operand2 = Double(label.text! + dotStr + String(sender.tag))!
-            // operand2 = Double(viewerNum + dotStr + String(sender.tag))!
             let numStr = doubleToString(operand2)
             operand2 = Double(numStr + dotStr + String(sender.tag))!
             drawNum(doubleToString(operand2))
         }
+        isDot = false
     }
 
     @IBAction func btnOparatorOnClicked(_ sender: UIButton) {
