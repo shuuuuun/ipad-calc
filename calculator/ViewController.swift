@@ -71,6 +71,19 @@ class ViewController: UIViewController {
         drawNum(num)
     }
 
+    @IBAction func btnPercentOnClicked(_ sender: UIButton) {
+        let num:Double
+        if !isCalculating() {
+            operand1 /= 100
+            num = operand1
+        }
+        else {
+            operand2 /= 100
+            num = operand2
+        }
+        drawNum(num)
+    }
+
     @IBAction func btnDotOnClicked(_ sender: UIButton) {
         let hasDot = regexpMatch(target: viewerNum, pattern: "\\.")
         if hasDot { return }
