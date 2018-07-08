@@ -33,12 +33,12 @@ class ViewController: UIViewController {
 //            NSLog(String(operand1))
             let numStr = doubleToString(operand1)
             operand1 = Double(numStr + dotStr + String(sender.tag))!
-            drawNum(doubleToString(operand1))
+            drawNum(operand1)
         }
         else {
             let numStr = doubleToString(operand2)
             operand2 = Double(numStr + dotStr + String(sender.tag))!
-            drawNum(doubleToString(operand2))
+            drawNum(operand2)
         }
         isDot = false
     }
@@ -77,8 +77,7 @@ class ViewController: UIViewController {
             operand2 *= -1
             num = operand2
         }
-        viewerNum = String(format: "%.0f", num)
-        label.text = viewerNum
+        drawNum(num)
     }
 
     @IBAction func btnDotOnClicked(_ sender: UIButton) {
@@ -92,7 +91,7 @@ class ViewController: UIViewController {
     @IBAction func btnEqualOnClicked(_ sender: UIButton) {
         if !isCalculating() { return }
         let result = calc(operand1, operatorType, operand2)
-        drawNum(String(result))
+        drawNum(result)
         operand1 = result
         operand2 = 0
         operatorType = 0
@@ -109,14 +108,8 @@ class ViewController: UIViewController {
         return str
     }
 
-    func drawNum(_ num: String) {
-        if Double(num) == floor(Double(num)!) {
-//            viewerNum = String(format: "%.0f", num)
-            viewerNum = String(format: "%.0f", floor(Double(num)!))
-        }
-        else {
-            viewerNum = String(num)
-        }
+    func drawNum(_ num: Double) {
+        viewerNum = doubleToString(num)
         label.text = viewerNum
     }
 
