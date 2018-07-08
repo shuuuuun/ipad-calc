@@ -9,7 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
+    // for hack sizeClass
+    var isPortrait = false
+    var traitCollectionCompactRegular  =  UITraitCollection()
+    var traitCollectionAnyAny = UITraitCollection()
+
     let OperatorTypes = [
         "Null": 0,
         "DividedBy": 1,
@@ -131,10 +136,35 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.setUpReferenceSizeClasses()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+extension ViewController {
+    func setUpReferenceSizeClasses() {
+        let traitCollectionHcompact = UITraitCollection.init(horizontalSizeClass: UIUserInterfaceSizeClass.compact)
+        let traitCollectionVRegular = UITraitCollection.init(verticalSizeClass: UIUserInterfaceSizeClass.regular)
+        self.traitCollectionCompactRegular = UITraitCollection.init(traitsFrom: [traitCollectionHcompact, traitCollectionVRegular])
+
+        let traitCollectionHAny = UITraitCollection.init(horizontalSizeClass: UIUserInterfaceSizeClass.unspecified)
+        let traitCollectionVAny = UITraitCollection.init(verticalSizeClass: UIUserInterfaceSizeClass.unspecified)
+        self.traitCollectionAnyAny = UITraitCollection.init(traitsFrom: [traitCollectionHAny, traitCollectionVAny])
+
+        self.isPortrait = self.view.frame.height > self.view.frame.width
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.isPortrait = size.height > size.width
+    }
+
+    override func overrideTraitCollection(forChildViewController childViewController: UIViewController) -> UITraitCollection? {
+        let traitCollectionForOverride = self.isPortrait ? self.traitCollectionCompactRegular : self.traitCollectionAnyAny
+        return traitCollectionForOverride
     }
 }
