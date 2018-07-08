@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
         let dotStr:String = isDot ? "." : ""
-        if operatorType == OperatorTypes["Null"] {
+        if !isCalculating() {
 //            NSLog(String(operand1))
             let numStr = doubleToString(operand1)
             operand1 = Double(numStr + dotStr + String(sender.tag))!
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnSignOnClicked(_ sender: UIButton) {
         let num:Double
-        if operatorType == OperatorTypes["Null"] {
+        if !isCalculating() {
             operand1 *= -1
             num = operand1
         }
@@ -90,7 +90,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnEqualOnClicked(_ sender: UIButton) {
-        if operatorType == OperatorTypes["Null"] { return }
+        if !isCalculating() { return }
         let result = calc(operand1, operatorType, operand2)
         drawNum(String(result))
         operand1 = result
@@ -120,9 +120,9 @@ class ViewController: UIViewController {
         label.text = viewerNum
     }
 
-//    func isCalculating() -> (Bool) {
-//        return operatorType != OperatorTypes["Null"]
-//    }
+    func isCalculating() -> (Bool) {
+        return operatorType != OperatorTypes["Null"]
+    }
 
     func calc(_ operand1: Double, _ operatorType: Int, _ operand2: Double) -> (Double) {
 //        console.log(operand1, operatorType, operand2);
