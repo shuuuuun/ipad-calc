@@ -30,7 +30,6 @@ class ViewController: UIViewController {
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
         let dotStr:String = isDot ? "." : ""
         if !isCalculating() {
-//            NSLog(String(operand1))
             let numStr = doubleToString(operand1)
             operand1 = Double(numStr + dotStr + String(sender.tag))!
             drawNum(operand1)
@@ -44,18 +43,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnOparatorOnClicked(_ sender: UIButton) {
-//        if sender.tag == OperatorTypes["DividedBy"] { // Devide
-//            label.text = "/"
-//        }
-//        else if sender.tag == OperatorTypes["Times"] { // Multiply
-//            label.text = "x"
-//        }
-//        else if sender.tag == OperatorTypes["Minus"] { // Minus
-//            label.text = "-"
-//        }
-//        else if sender.tag == OperatorTypes["Plus"] { // Plus
-//            label.text = "+"
-//        }
         operatorType = sender.tag
     }
 
@@ -118,15 +105,15 @@ class ViewController: UIViewController {
     }
 
     func calc(_ operand1: Double, _ operatorType: Int, _ operand2: Double) -> (Double) {
-//        console.log(operand1, operatorType, operand2);
+        // NSLog(String(operand1) + ", " + String(operatorType) + ", " + String(operand2))
         switch operatorType {
-            case OperatorTypes["DividedBy"]:
+            case OperatorTypes["DividedBy"]: // Devide
                 return operand1 / operand2
-            case OperatorTypes["Times"]:
+            case OperatorTypes["Times"]: // Multiply
                 return operand1 * operand2
-            case OperatorTypes["Minus"]:
+            case OperatorTypes["Minus"]: // Minus
                 return operand1 - operand2
-            case OperatorTypes["Plus"]:
+            case OperatorTypes["Plus"]: // Plus
                 return operand1 + operand2
             default:
                 return operand2;
