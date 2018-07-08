@@ -68,8 +68,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnDotOnClicked(_ sender: UIButton) {
-        let num = Double(viewerNum)!
-        if num != floor(num) { return }
+        let hasDot = regexpMatch(target: viewerNum, pattern: "\\.")
+        if hasDot { return }
         viewerNum += "."
         label.text = viewerNum
         isDot = true
@@ -118,6 +118,14 @@ class ViewController: UIViewController {
             default:
                 return operand2;
         }
+    }
+
+    func regexpMatch(target: String, pattern: String, options: NSRegularExpression.Options = []) -> Bool {
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else {
+            return false
+        }
+        let matches = regex.matches(in: target, options: [], range: NSMakeRange(0, target.count))
+        return matches.count > 0
     }
 
     override func viewDidLoad() {
