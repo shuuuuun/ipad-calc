@@ -364,7 +364,7 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <exclude reference="bz2-MQ-I9d"/>
+                                <include reference="bz2-MQ-I9d"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
