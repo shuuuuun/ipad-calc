@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     ]
 
     var viewerNum:String = "0"
-    var currentNum:Double = 0
     var operand1:Double = 0
     var operand2:Double = 0
     var operatorType:Int = 0
