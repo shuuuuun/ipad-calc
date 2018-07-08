@@ -22,8 +22,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t6b-nD-k7o">
                                 <rect key="frame" x="0.0" y="20" width="768" height="270.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g35-6V-3Iq">
-                                        <rect key="frame" x="642" y="74.5" width="86" height="166"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g35-6V-3Iq">
+                                        <rect key="frame" x="40" y="110.5" width="688" height="130"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="130" id="xOL-Um-DZP"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="138"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -33,6 +36,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="g35-6V-3Iq" secondAttribute="bottom" constant="30" id="2gX-XA-g2M"/>
                                     <constraint firstAttribute="trailing" secondItem="g35-6V-3Iq" secondAttribute="trailing" constant="40" id="D2G-Ts-Y0z"/>
+                                    <constraint firstItem="g35-6V-3Iq" firstAttribute="leading" secondItem="t6b-nD-k7o" secondAttribute="leading" constant="40" id="NAA-Rl-DSG"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zHW-pB-J1b">
