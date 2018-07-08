@@ -59,29 +59,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnSignOnClicked(_ sender: UIButton) {
-        let num:Double
         if !isCalculating() {
             operand1 *= -1
-            num = operand1
+            drawNum(operand1)
         }
         else {
             operand2 *= -1
-            num = operand2
+            drawNum(operand2)
         }
-        drawNum(num)
     }
 
     @IBAction func btnPercentOnClicked(_ sender: UIButton) {
-        let num:Double
         if !isCalculating() {
             operand1 /= 100
-            num = operand1
+            drawNum(operand1)
         }
         else {
             operand2 /= 100
-            num = operand2
+            drawNum(operand2)
         }
-        drawNum(num)
     }
 
     @IBAction func btnDotOnClicked(_ sender: UIButton) {
