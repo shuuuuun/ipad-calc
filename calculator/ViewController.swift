@@ -34,10 +34,9 @@ class ViewController: UIViewController {
 
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
         let clickedNumStr = String(sender.tag)
-        let hasDot = regexpMatch(target: viewerNum, pattern: "\\.")
         if !isCalculating() {
             let isZero = operand1 == 0
-            let currentNumStr = hasDot ? viewerNum : (isZero ? "" : doubleToString(operand1))
+            let currentNumStr = hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(operand1))
             let numStr = currentNumStr + clickedNumStr
             operand1 = Double(numStr)!
             viewerNum = numStr
@@ -45,7 +44,7 @@ class ViewController: UIViewController {
         else {
             let isShowingOperand1 = operand1 == Double(viewerNum)!
             let isZero = operand2 == 0
-            let currentNumStr = !isShowingOperand1 && hasDot ? viewerNum : (isZero ? "" : doubleToString(operand2))
+            let currentNumStr = !isShowingOperand1 && hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(operand2))
             let numStr = currentNumStr + clickedNumStr
             operand2 = Double(numStr)!
 //            NSLog("operand1:" + String(operand1) + ", operand2:" + String(operand2) + ", numStr:" + numStr + ", isShowingOperand1:" + String(isShowingOperand1) + ", hasDot:" + String(hasDot))
@@ -91,8 +90,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnDotOnClicked(_ sender: UIButton) {
-        let hasDot = regexpMatch(target: viewerNum, pattern: "\\.")
-        if hasDot { return }
+        if hasDotInViewer() { return }
         viewerNum += "."
         label.text = viewerNum
     }
@@ -151,6 +149,10 @@ class ViewController: UIViewController {
             default:
                 return operand2;
         }
+    }
+
+    func hasDotInViewer() -> Bool {
+        return regexpMatch(target: viewerNum, pattern: "\\.")
     }
 
     func regexpMatch(target: String, pattern: String, options: NSRegularExpression.Options = []) -> Bool {
