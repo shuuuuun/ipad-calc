@@ -34,28 +34,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
 
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
+        let clickedNumStr = String(sender.tag)
 //        let dotStr:String = isDot ? "." : ""
-        var hasDot = regexpMatch(target: viewerNum, pattern: "\\.")
+        let hasDot = regexpMatch(target: viewerNum, pattern: "\\.")
         if !isCalculating() {
-//            let numStr = doubleToString(operand1)
-//            operand1 = Double(numStr + dotStr + String(sender.tag))!
-//            drawNum(operand1)
             let isZero = operand1 == 0
-            let numStr = hasDot ? (viewerNum + String(sender.tag)) : (isZero ? String(sender.tag) : doubleToString(operand1) + String(sender.tag))
+            let currentNumStr = hasDot ? viewerNum : (isZero ? "" : doubleToString(operand1))
+            let numStr = currentNumStr + clickedNumStr
             operand1 = Double(numStr)!
-//            NSLog(String(operand1) + ", numStr:" + numStr + ", isDot:" + String(isDot) + ", hasDot:" + String(hasDot))
             viewerNum = numStr
         }
         else {
-//            let numStr = doubleToString(operand2)
-//            operand2 = Double(numStr + dotStr + String(sender.tag))!
-//            drawNum(operand2)
             let isShowingOperand1 = operand1 == Double(viewerNum)!
-            if isShowingOperand1 { hasDot = false }
             let isZero = operand2 == 0
-            let numStr = hasDot ? (viewerNum + String(sender.tag)) : (isZero ? String(sender.tag) : doubleToString(operand2) + String(sender.tag))
+            let currentNumStr = !isShowingOperand1 && hasDot ? viewerNum : (isZero ? "" : doubleToString(operand2))
+            let numStr = currentNumStr + clickedNumStr
             operand2 = Double(numStr)!
-//            NSLog(String(operand2) + ", numStr:" + numStr + ", isDot:" + String(isDot) + ", hasDot:" + String(hasDot))
+//            NSLog("operand1:" + String(operand1) + ", operand2:" + String(operand2) + ", numStr:" + numStr + ", isShowingOperand1:" + String(isShowingOperand1) + ", hasDot:" + String(hasDot))
             viewerNum = numStr
         }
         label.text = viewerNum
