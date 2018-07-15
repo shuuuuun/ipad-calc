@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     var operand1:Double = 0
     var operand2:Double = 0
     var operatorType:Int = 0
+    var lastOperand2:Double = 0
+    var lastOperatorType:Int = 0
     var isDot = false
 
     @IBOutlet weak var label: UILabel!
@@ -54,6 +56,8 @@ class ViewController: UIViewController {
         operand1 = 0
         operand2 = 0
         operatorType = 0
+        lastOperand2 = 0
+        lastOperatorType = 0
         viewerNum = "0"
         label.text = viewerNum
     }
@@ -89,12 +93,23 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnEqualOnClicked(_ sender: UIButton) {
-        if !isCalculating() { return }
-        let result = calc(operand1, operatorType, operand2)
-        drawNum(result)
-        operand1 = result
-        operand2 = 0
-        operatorType = 0
+        if isCalculating() {
+            let result = calc(operand1, operatorType, operand2)
+            drawNum(result)
+            lastOperand2 = operand2
+            lastOperatorType = operatorType
+            operand1 = result
+            operand2 = 0
+            operatorType = 0
+        }
+        else {
+            // repeat equal
+            if lastOperatorType != OperatorTypes["Null"] {
+                let result = calc(operand1, lastOperatorType, lastOperand2)
+                drawNum(result)
+                operand1 = result
+            }
+        }
     }
 
     func doubleToString(_ num:Double) -> (String) {
