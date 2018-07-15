@@ -34,17 +34,31 @@ class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
 
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
-        let dotStr:String = isDot ? "." : ""
+//        let dotStr:String = isDot ? "." : ""
+        var hasDot = regexpMatch(target: viewerNum, pattern: "\\.")
         if !isCalculating() {
-            let numStr = doubleToString(operand1)
-            operand1 = Double(numStr + dotStr + String(sender.tag))!
-            drawNum(operand1)
+//            let numStr = doubleToString(operand1)
+//            operand1 = Double(numStr + dotStr + String(sender.tag))!
+//            drawNum(operand1)
+            let isZero = operand1 == 0
+            let numStr = hasDot ? (viewerNum + String(sender.tag)) : (isZero ? String(sender.tag) : doubleToString(operand1) + String(sender.tag))
+            operand1 = Double(numStr)!
+//            NSLog(String(operand1) + ", numStr:" + numStr + ", isDot:" + String(isDot) + ", hasDot:" + String(hasDot))
+            viewerNum = numStr
         }
         else {
-            let numStr = doubleToString(operand2)
-            operand2 = Double(numStr + dotStr + String(sender.tag))!
-            drawNum(operand2)
+//            let numStr = doubleToString(operand2)
+//            operand2 = Double(numStr + dotStr + String(sender.tag))!
+//            drawNum(operand2)
+            let isShowingOperand1 = operand1 == Double(viewerNum)!
+            if isShowingOperand1 { hasDot = false }
+            let isZero = operand2 == 0
+            let numStr = hasDot ? (viewerNum + String(sender.tag)) : (isZero ? String(sender.tag) : doubleToString(operand2) + String(sender.tag))
+            operand2 = Double(numStr)!
+//            NSLog(String(operand2) + ", numStr:" + numStr + ", isDot:" + String(isDot) + ", hasDot:" + String(hasDot))
+            viewerNum = numStr
         }
+        label.text = viewerNum
         isDot = false
     }
 
@@ -61,7 +75,7 @@ class ViewController: UIViewController {
         viewerNum = "0"
         label.text = viewerNum
     }
-    
+
     @IBAction func btnSignOnClicked(_ sender: UIButton) {
         if !isCalculating() {
             operand1 *= -1
