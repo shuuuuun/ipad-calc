@@ -29,13 +29,11 @@ class ViewController: UIViewController {
     var operatorType:Int = 0
     var lastOperand2:Double = 0
     var lastOperatorType:Int = 0
-    var isDot = false
 
     @IBOutlet weak var label: UILabel!
 
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
         let clickedNumStr = String(sender.tag)
-//        let dotStr:String = isDot ? "." : ""
         let hasDot = regexpMatch(target: viewerNum, pattern: "\\.")
         if !isCalculating() {
             let isZero = operand1 == 0
@@ -54,7 +52,6 @@ class ViewController: UIViewController {
             viewerNum = numStr
         }
         label.text = viewerNum
-        isDot = false
     }
 
     @IBAction func btnOparatorOnClicked(_ sender: UIButton) {
@@ -98,7 +95,6 @@ class ViewController: UIViewController {
         if hasDot { return }
         viewerNum += "."
         label.text = viewerNum
-        isDot = true
     }
 
     @IBAction func btnEqualOnClicked(_ sender: UIButton) {
