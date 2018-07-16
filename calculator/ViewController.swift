@@ -35,6 +35,7 @@ class ViewController: UIViewController {
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
         let clickedNumStr = String(sender.tag)
         if !isCalculating() {
+            if hasExponent(String(operand1)) { return }
             let isZero = operand1 == 0
             let currentNumStr = hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(operand1))
             let numStr = currentNumStr + clickedNumStr
@@ -42,15 +43,17 @@ class ViewController: UIViewController {
             viewerNum = numStr
         }
         else {
+            if hasExponent(String(operand2)) { return }
             let isShowingOperand1 = operand1 == Double(viewerNum)!
             let isZero = operand2 == 0
             let currentNumStr = !isShowingOperand1 && hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(operand2))
             let numStr = currentNumStr + clickedNumStr
             operand2 = Double(numStr)!
-//            NSLog("operand1:" + String(operand1) + ", operand2:" + String(operand2) + ", numStr:" + numStr + ", isShowingOperand1:" + String(isShowingOperand1) + ", hasDot:" + String(hasDot))
             viewerNum = numStr
         }
         label.text = viewerNum
+//        NSLog("operand1:" + String(operand1) + ", operand2:" + String(operand2) + ", viewerNum:" + String(viewerNum))
+//        NSLog("operand1:\(operand1), operand2:\(operand2), viewerNum:\(viewerNum)")
     }
 
     @IBAction func btnOparatorOnClicked(_ sender: UIButton) {
@@ -114,12 +117,16 @@ class ViewController: UIViewController {
 
     func doubleToString(_ num:Double) -> (String) {
         let str:String
-        if num == floor(num) {
+        if hasExponent(String(num)) {
+            str = String(num)
+        }
+        else if num == floor(num) {
             str = String(format: "%.0f", num)
         }
         else {
             str = String(num)
         }
+//        NSLog("doubleToString: \(num), \(str), \(hasExponent(String(num)))")
         return str
     }
 
@@ -156,6 +163,10 @@ class ViewController: UIViewController {
             default:
                 return operand2;
         }
+    }
+
+    func hasExponent(_ target: String) -> Bool {
+        return regexpMatch(target: target, pattern: "e")
     }
 
     func hasDotInViewer() -> Bool {
