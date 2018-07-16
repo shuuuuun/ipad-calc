@@ -55,13 +55,7 @@ class ViewController: UIViewController {
 
     @IBAction func btnOparatorOnClicked(_ sender: UIButton) {
         if isCalculating() {
-            let result = calc(operand1, operatorType, operand2)
-            drawNum(result)
-            lastOperand2 = operand2
-            lastOperatorType = operatorType
-            operand1 = result
-            operand2 = 0
-            operatorType = 0
+            doCalc()
         }
         operatorType = sender.tag
     }
@@ -106,13 +100,7 @@ class ViewController: UIViewController {
 
     @IBAction func btnEqualOnClicked(_ sender: UIButton) {
         if isCalculating() {
-            let result = calc(operand1, operatorType, operand2)
-            drawNum(result)
-            lastOperand2 = operand2
-            lastOperatorType = operatorType
-            operand1 = result
-            operand2 = 0
-            operatorType = 0
+            doCalc()
         }
         else {
             // repeat equal
@@ -142,6 +130,16 @@ class ViewController: UIViewController {
 
     func isCalculating() -> (Bool) {
         return operatorType != OperatorTypes["Null"]
+    }
+
+    func doCalc() {
+        let result = calc(operand1, operatorType, operand2)
+        drawNum(result)
+        lastOperand2 = operand2
+        lastOperatorType = operatorType
+        operand1 = result
+        operand2 = 0
+        operatorType = 0
     }
 
     func calc(_ operand1: Double, _ operatorType: Int, _ operand2: Double) -> (Double) {
