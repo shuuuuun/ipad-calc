@@ -54,6 +54,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnOparatorOnClicked(_ sender: UIButton) {
+        if isCalculating() {
+            let result = calc(operand1, operatorType, operand2)
+            drawNum(result)
+            lastOperand2 = operand2
+            lastOperatorType = operatorType
+            operand1 = result
+            operand2 = 0
+            operatorType = 0
+        }
         operatorType = sender.tag
     }
 
