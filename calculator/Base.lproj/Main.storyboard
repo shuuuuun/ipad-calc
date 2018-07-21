@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad9_7" orientation="landscape">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,14 +16,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t6b-nD-k7o">
-                                <rect key="frame" x="0.0" y="20" width="1024" height="240"/>
+                                <rect key="frame" x="0.0" y="20" width="768" height="270.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g35-6V-3Iq">
-                                        <rect key="frame" x="40" y="80" width="944" height="130"/>
+                                        <rect key="frame" x="40" y="110.5" width="688" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="130" id="xOL-Um-DZP"/>
                                         </constraints>
@@ -41,10 +41,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zHW-pB-J1b">
-                                <rect key="frame" x="0.0" y="260" width="1024" height="508"/>
+                                <rect key="frame" x="0.0" y="290.5" width="768" height="733.5"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmL-X5-WXQ" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="306" width="255.5" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="441" width="191.5" height="146"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="1">
@@ -63,7 +63,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Kt-FN-coo" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="204" width="255.5" height="101"/>
+                                        <rect key="frame" x="0.0" y="294.5" width="191.5" height="145.5"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="4">
@@ -82,7 +82,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvT-xt-hyz" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="102.5" width="255.5" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="147.5" width="191.5" height="146"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="7">
@@ -101,7 +101,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Q0-iv-2gM" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="255.5" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="1" width="191.5" height="145.5"/>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="AC">
@@ -120,7 +120,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aK4-Vd-Kva" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="256.5" y="306" width="255" height="100.5"/>
+                                        <rect key="frame" x="192.5" y="441" width="191" height="146"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="2">
@@ -139,7 +139,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7s-H2-N1e" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="256.5" y="204" width="255" height="101"/>
+                                        <rect key="frame" x="192.5" y="294.5" width="191" height="145.5"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="5">
@@ -158,7 +158,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUo-NU-lwa" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="256.5" y="102.5" width="255" height="100.5"/>
+                                        <rect key="frame" x="192.5" y="147.5" width="191" height="146"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="8">
@@ -177,7 +177,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIz-VH-QKV" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="256.5" y="1" width="255" height="100.5"/>
+                                        <rect key="frame" x="192.5" y="1" width="191" height="145.5"/>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="+/-">
@@ -196,7 +196,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2Z-q7-5Sv" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="512.5" y="306" width="255.5" height="100.5"/>
+                                        <rect key="frame" x="384.5" y="441" width="191.5" height="146"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="3">
@@ -215,7 +215,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gB-vg-7uL" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="512.5" y="204" width="255.5" height="101"/>
+                                        <rect key="frame" x="384.5" y="294.5" width="191.5" height="145.5"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="6">
@@ -234,7 +234,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQT-yf-rGl" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="512.5" y="102.5" width="255.5" height="100.5"/>
+                                        <rect key="frame" x="384.5" y="147.5" width="191.5" height="146"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="9">
@@ -253,7 +253,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YE7-w2-yi9" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="512.5" y="1" width="255.5" height="100.5"/>
+                                        <rect key="frame" x="384.5" y="1" width="191.5" height="145.5"/>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="%">
@@ -272,7 +272,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vO-kd-lCL" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="769" y="306" width="255" height="100.5"/>
+                                        <rect key="frame" x="577" y="441" width="191" height="146"/>
                                         <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="+">
@@ -291,7 +291,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ev6-Yc-ywp" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="769" y="204" width="255" height="101"/>
+                                        <rect key="frame" x="577" y="294.5" width="191" height="145.5"/>
                                         <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="−">
@@ -310,7 +310,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FV6-zx-jhF" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="769" y="102.5" width="255" height="100.5"/>
+                                        <rect key="frame" x="577" y="147.5" width="191" height="146"/>
                                         <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="×">
@@ -329,7 +329,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usr-u4-QZY" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="769" y="1" width="255" height="100.5"/>
+                                        <rect key="frame" x="577" y="1" width="191" height="145.5"/>
                                         <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="÷">
@@ -348,7 +348,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2Z-tx-uVN" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="407.5" width="511.5" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="588" width="383.5" height="145.5"/>
                                         <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="0">
@@ -367,7 +367,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYZ-vt-vCC" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="512.5" y="407.5" width="255.5" height="100.5"/>
+                                        <rect key="frame" x="384.5" y="588" width="191.5" height="145.5"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title=".">
@@ -386,7 +386,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF6-3K-40j" customClass="BackgroundHighlightedButton" customModule="calculator" customModuleProvider="target">
-                                        <rect key="frame" x="769" y="407.5" width="255" height="100.5"/>
+                                        <rect key="frame" x="577" y="588" width="191" height="145.5"/>
                                         <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>
                                         <state key="normal" title="=">
