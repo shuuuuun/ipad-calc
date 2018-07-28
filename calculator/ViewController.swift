@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         if isCalculating() {
             doCalc()
         }
-        operatorType = OperatorType(rawValue: sender.tag)!
+        operatorType = OperatorType(rawValue: sender.tag) ?? .none
     }
 
     @IBAction func btnClearOnClicked(_ sender: UIButton) {
