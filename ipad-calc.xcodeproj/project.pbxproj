@@ -207,7 +207,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D0AE8CD320A480B200A43CD9 /* Build configuration list for PBXProject "calculator" */;
+			buildConfigurationList = D0AE8CD320A480B200A43CD9 /* Build configuration list for PBXProject "ipad-calc" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -553,7 +553,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D0AE8CD320A480B200A43CD9 /* Build configuration list for PBXProject "calculator" */ = {
+		D0AE8CD320A480B200A43CD9 /* Build configuration list for PBXProject "ipad-calc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0AE8CFE20A480B300A43CD9 /* Debug */,
