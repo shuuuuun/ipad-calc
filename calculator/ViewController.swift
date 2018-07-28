@@ -16,12 +16,12 @@ class ViewController: UIViewController {
         case minus
         case plus
     }
-    var viewerNum:String = "0"
-    var operand1:Double = 0
-    var operand2:Double = 0
-    var operatorType:OperatorType = .none
-    var lastOperand2:Double = 0
-    var lastOperatorType:OperatorType = .none
+    var viewerNum: String = "0"
+    var operand1: Double = 0
+    var operand2: Double = 0
+    var operatorType: OperatorType = .none
+    var lastOperand2: Double = 0
+    var lastOperatorType: OperatorType = .none
 
     @IBOutlet weak var label: UILabel!
 
@@ -108,8 +108,8 @@ class ViewController: UIViewController {
         }
     }
 
-    func doubleToString(_ num:Double) -> (String) {
-        let str:String
+    func doubleToString(_ num: Double) -> (String) {
+        let str: String
         if hasExponent(String(num)) {
             str = String(num)
         }
