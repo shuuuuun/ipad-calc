@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BackgroundHighlightedButton: UIButton {
+final class BackgroundHighlightedButton: UIButton {
     @IBInspectable var highlightedBackgroundColor :UIColor?
     @IBInspectable var nonHighlightedBackgroundColor :UIColor?
     override var isHighlighted :Bool {
