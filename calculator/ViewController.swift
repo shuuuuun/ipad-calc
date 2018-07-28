@@ -108,7 +108,7 @@ class ViewController: UIViewController {
         }
     }
 
-    func doubleToString(_ num: Double) -> (String) {
+    private func doubleToString(_ num: Double) -> (String) {
         let str: String
         if hasExponent(String(num)) {
             str = String(num)
@@ -123,16 +123,16 @@ class ViewController: UIViewController {
         return str
     }
 
-    func drawNum(_ num: Double) {
+    private func drawNum(_ num: Double) {
         viewerNum = doubleToString(num)
         label.text = viewerNum
     }
 
-    func isCalculating() -> (Bool) {
+    private func isCalculating() -> (Bool) {
         return operatorType != .none
     }
 
-    func doCalc() {
+    private func doCalc() {
         let result = calc(operand1, operatorType, operand2)
         drawNum(result)
         lastOperand2 = operand2
@@ -142,7 +142,7 @@ class ViewController: UIViewController {
         operatorType = .none
     }
 
-    func calc(_ operand1: Double, _ operatorType: OperatorType, _ operand2: Double) -> (Double) {
+    private func calc(_ operand1: Double, _ operatorType: OperatorType, _ operand2: Double) -> (Double) {
         // NSLog(String(operand1) + ", " + String(operatorType) + ", " + String(operand2))
         switch operatorType {
             case .dividedBy:
@@ -158,15 +158,15 @@ class ViewController: UIViewController {
         }
     }
 
-    func hasExponent(_ target: String) -> Bool {
+    private func hasExponent(_ target: String) -> Bool {
         return regexpMatch(target: target, pattern: "e")
     }
 
-    func hasDotInViewer() -> Bool {
+    private func hasDotInViewer() -> Bool {
         return regexpMatch(target: viewerNum, pattern: "\\.")
     }
 
-    func regexpMatch(target: String, pattern: String, options: NSRegularExpression.Options = []) -> Bool {
+    private func regexpMatch(target: String, pattern: String, options: NSRegularExpression.Options = []) -> Bool {
         guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else {
             return false
         }
