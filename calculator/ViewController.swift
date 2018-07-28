@@ -153,8 +153,6 @@ class ViewController: UIViewController {
                 return operand1 - operand2
             case .plus:
                 return operand1 + operand2
-            default:
-                return operand2
         }
     }
 
