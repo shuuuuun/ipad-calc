@@ -108,7 +108,7 @@ final class ViewController: UIViewController {
         }
     }
 
-    private func doubleToString(_ num: Double) -> (String) {
+    private func doubleToString(_ num: Double) -> String {
         let str: String
         if hasExponent(String(num)) {
             str = String(num)
@@ -128,7 +128,7 @@ final class ViewController: UIViewController {
         label.text = viewerNum
     }
 
-    private func isCalculating() -> (Bool) {
+    private func isCalculating() -> Bool {
         return operatorType != .none
     }
 
@@ -142,7 +142,7 @@ final class ViewController: UIViewController {
         operatorType = .none
     }
 
-    private func calc(_ operand1: Double, _ operatorType: OperatorType, _ operand2: Double) -> (Double) {
+    private func calc(_ operand1: Double, _ operatorType: OperatorType, _ operand2: Double) -> Double {
         // NSLog(String(operand1) + ", " + String(operatorType) + ", " + String(operand2))
         switch operatorType {
             case .dividedBy:
