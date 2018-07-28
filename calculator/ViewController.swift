@@ -100,7 +100,7 @@ class ViewController: UIViewController {
         }
         else {
             // repeat equal
-            if lastOperatorType != OperatorType.none {
+            if lastOperatorType != .none {
                 let result = calc(operand1, lastOperatorType, lastOperand2)
                 drawNum(result)
                 operand1 = result
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
     }
 
     func isCalculating() -> (Bool) {
-        return operatorType != OperatorType.none
+        return operatorType != .none
     }
 
     func doCalc() {
@@ -145,13 +145,13 @@ class ViewController: UIViewController {
     func calc(_ operand1: Double, _ operatorType: OperatorType, _ operand2: Double) -> (Double) {
         // NSLog(String(operand1) + ", " + String(operatorType) + ", " + String(operand2))
         switch operatorType {
-            case OperatorType.dividedBy:
+            case .dividedBy:
                 return operand1 / operand2
-            case OperatorType.times:
+            case .times:
                 return operand1 * operand2
-            case OperatorType.minus:
+            case .minus:
                 return operand1 - operand2
-            case OperatorType.plus:
+            case .plus:
                 return operand1 + operand2
             default:
                 return operand2
