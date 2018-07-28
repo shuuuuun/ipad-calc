@@ -9,14 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let OperatorTypes = [
-        "Null": 0,
-        "DividedBy": 1,
-        "Times": 2,
-        "Minus": 3,
-        "Plus": 4,
-    ]
-
+    enum OperatorTypes: Int {
+        case none
+        case dividedBy
+        case times
+        case minus
+        case plus
+    }
     var viewerNum:String = "0"
     var operand1:Double = 0
     var operand2:Double = 0
@@ -101,7 +100,7 @@ class ViewController: UIViewController {
         }
         else {
             // repeat equal
-            if lastOperatorType != OperatorTypes["Null"] {
+            if lastOperatorType != OperatorTypes.none.rawValue {
                 let result = calc(operand1, lastOperatorType, lastOperand2)
                 drawNum(result)
                 operand1 = result
@@ -130,7 +129,7 @@ class ViewController: UIViewController {
     }
 
     func isCalculating() -> (Bool) {
-        return operatorType != OperatorTypes["Null"]
+        return operatorType != OperatorTypes.none.rawValue
     }
 
     func doCalc() {
@@ -146,16 +145,16 @@ class ViewController: UIViewController {
     func calc(_ operand1: Double, _ operatorType: Int, _ operand2: Double) -> (Double) {
         // NSLog(String(operand1) + ", " + String(operatorType) + ", " + String(operand2))
         switch operatorType {
-            case OperatorTypes["DividedBy"]: // Devide
+            case OperatorTypes.dividedBy.rawValue:
                 return operand1 / operand2
-            case OperatorTypes["Times"]: // Multiply
+            case OperatorTypes.times.rawValue:
                 return operand1 * operand2
-            case OperatorTypes["Minus"]: // Minus
+            case OperatorTypes.minus.rawValue:
                 return operand1 - operand2
-            case OperatorTypes["Plus"]: // Plus
+            case OperatorTypes.plus.rawValue:
                 return operand1 + operand2
             default:
-                return operand2;
+                return operand2
         }
     }
 
