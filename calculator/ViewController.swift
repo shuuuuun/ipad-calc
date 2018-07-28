@@ -32,16 +32,29 @@ final class ViewController: UIViewController {
             let isZero = operand1 == 0
             let currentNumStr = hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(operand1))
             let numStr = currentNumStr + clickedNumStr
-            operand1 = Double(numStr)!
+            if let unwrapped = Double(numStr) {
+                operand1 = unwrapped
+            }
+            else {
+                operand1 = 0
+            }
             viewerNum = numStr
         }
         else {
             if hasExponent(String(operand2)) { return }
-            let isShowingOperand1 = operand1 == Double(viewerNum)!
+            var isShowingOperand1: Bool = false
+            if let unwrapped = Double(viewerNum) {
+                isShowingOperand1 = operand1 == unwrapped
+            }
             let isZero = operand2 == 0
             let currentNumStr = !isShowingOperand1 && hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(operand2))
             let numStr = currentNumStr + clickedNumStr
-            operand2 = Double(numStr)!
+            if let unwrapped = Double(numStr) {
+                operand2 = unwrapped
+            }
+            else {
+                operand2 = 0
+            }
             viewerNum = numStr
         }
         label.text = viewerNum
