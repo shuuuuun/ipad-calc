@@ -9,20 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let OperatorTypes = [
-        "Null": 0,
-        "DividedBy": 1,
-        "Times": 2,
-        "Minus": 3,
-        "Plus": 4,
-    ]
-
+    enum OperatorType: Int {
+        case none
+        case dividedBy
+        case times
+        case minus
+        case plus
+    }
     var viewerNum:String = "0"
     var operand1:Double = 0
     var operand2:Double = 0
-    var operatorType:Int = 0
+    var operatorType:OperatorType = .none
     var lastOperand2:Double = 0
-    var lastOperatorType:Int = 0
+    var lastOperatorType:OperatorType = .none
 
     @IBOutlet weak var label: UILabel!
 
@@ -54,15 +53,15 @@ class ViewController: UIViewController {
         if isCalculating() {
             doCalc()
         }
-        operatorType = sender.tag
+        operatorType = OperatorType(rawValue: sender.tag) ?? .none
     }
 
     @IBAction func btnClearOnClicked(_ sender: UIButton) {
         operand1 = 0
         operand2 = 0
-        operatorType = 0
+        operatorType = .none
         lastOperand2 = 0
-        lastOperatorType = 0
+        lastOperatorType = .none
         viewerNum = "0"
         label.text = viewerNum
     }
@@ -101,7 +100,7 @@ class ViewController: UIViewController {
         }
         else {
             // repeat equal
-            if lastOperatorType != OperatorTypes["Null"] {
+            if lastOperatorType != .none {
                 let result = calc(operand1, lastOperatorType, lastOperand2)
                 drawNum(result)
                 operand1 = result
@@ -130,7 +129,7 @@ class ViewController: UIViewController {
     }
 
     func isCalculating() -> (Bool) {
-        return operatorType != OperatorTypes["Null"]
+        return operatorType != .none
     }
 
     func doCalc() {
@@ -140,22 +139,22 @@ class ViewController: UIViewController {
         lastOperatorType = operatorType
         operand1 = result
         operand2 = 0
-        operatorType = 0
+        operatorType = .none
     }
 
-    func calc(_ operand1: Double, _ operatorType: Int, _ operand2: Double) -> (Double) {
+    func calc(_ operand1: Double, _ operatorType: OperatorType, _ operand2: Double) -> (Double) {
         // NSLog(String(operand1) + ", " + String(operatorType) + ", " + String(operand2))
         switch operatorType {
-            case OperatorTypes["DividedBy"]: // Devide
+            case .dividedBy:
                 return operand1 / operand2
-            case OperatorTypes["Times"]: // Multiply
+            case .times:
                 return operand1 * operand2
-            case OperatorTypes["Minus"]: // Minus
+            case .minus:
                 return operand1 - operand2
-            case OperatorTypes["Plus"]: // Plus
+            case .plus:
                 return operand1 + operand2
             default:
-                return operand2;
+                return operand2
         }
     }
 
