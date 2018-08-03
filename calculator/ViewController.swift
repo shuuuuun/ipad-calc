@@ -28,9 +28,9 @@ final class ViewController: UIViewController {
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
         let clickedNumStr = String(sender.tag)
         if !isCalculating() {
-            if hasExponent(String(operand1)) { return }
+            if hasExponent(target: String(operand1)) { return }
             let isZero = operand1 == 0
-            let currentNumStr = hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(operand1))
+            let currentNumStr = hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(num: operand1))
             let numStr = currentNumStr + clickedNumStr
             if let unwrapped = Double(numStr) {
                 operand1 = unwrapped
@@ -41,13 +41,13 @@ final class ViewController: UIViewController {
             viewerNum = numStr
         }
         else {
-            if hasExponent(String(operand2)) { return }
+            if hasExponent(target: String(operand2)) { return }
             var isShowingOperand1: Bool = false
             if let unwrapped = Double(viewerNum) {
                 isShowingOperand1 = operand1 == unwrapped
             }
             let isZero = operand2 == 0
-            let currentNumStr = !isShowingOperand1 && hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(operand2))
+            let currentNumStr = !isShowingOperand1 && hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(num: operand2))
             let numStr = currentNumStr + clickedNumStr
             if let unwrapped = Double(numStr) {
                 operand2 = unwrapped
@@ -82,22 +82,22 @@ final class ViewController: UIViewController {
     @IBAction func btnSignOnClicked(_ sender: UIButton) {
         if !isCalculating() {
             operand1 *= -1
-            drawNum(operand1)
+            drawNum(num: operand1)
         }
         else {
             operand2 *= -1
-            drawNum(operand2)
+            drawNum(num: operand2)
         }
     }
 
     @IBAction func btnPercentOnClicked(_ sender: UIButton) {
         if !isCalculating() {
             operand1 /= 100
-            drawNum(operand1)
+            drawNum(num: operand1)
         }
         else {
             operand2 /= 100
-            drawNum(operand2)
+            drawNum(num: operand2)
         }
     }
 
@@ -114,16 +114,16 @@ final class ViewController: UIViewController {
         else {
             // repeat equal
             if lastOperatorType != .none {
-                let result = calc(operand1, lastOperatorType, lastOperand2)
-                drawNum(result)
+                let result = calc(operand1: operand1, operatorType: lastOperatorType, operand2: lastOperand2)
+                drawNum(num: result)
                 operand1 = result
             }
         }
     }
 
-    private func doubleToString(_ num: Double) -> String {
+    private func doubleToString(num: Double) -> String {
         let str: String
-        if hasExponent(String(num)) {
+        if hasExponent(target: String(num)) {
             str = String(num)
         }
         else if num == floor(num) {
@@ -136,8 +136,8 @@ final class ViewController: UIViewController {
         return str
     }
 
-    private func drawNum(_ num: Double) {
-        viewerNum = doubleToString(num)
+    private func drawNum(num: Double) {
+        viewerNum = doubleToString(num: num)
         label.text = viewerNum
     }
 
@@ -146,8 +146,8 @@ final class ViewController: UIViewController {
     }
 
     private func doCalc() {
-        let result = calc(operand1, operatorType, operand2)
-        drawNum(result)
+        let result = calc(operand1: operand1, operatorType: operatorType, operand2: operand2)
+        drawNum(num: result)
         lastOperand2 = operand2
         lastOperatorType = operatorType
         operand1 = result
@@ -155,7 +155,7 @@ final class ViewController: UIViewController {
         operatorType = .none
     }
 
-    private func calc(_ operand1: Double, _ operatorType: OperatorType, _ operand2: Double) -> Double {
+    private func calc(operand1: Double, operatorType: OperatorType, operand2: Double) -> Double {
         // NSLog(String(operand1) + ", " + String(operatorType) + ", " + String(operand2))
         switch operatorType {
             case .dividedBy:
@@ -171,7 +171,7 @@ final class ViewController: UIViewController {
         }
     }
 
-    private func hasExponent(_ target: String) -> Bool {
+    private func hasExponent(target: String) -> Bool {
         return regexpMatch(target: target, pattern: "e")
     }
 
