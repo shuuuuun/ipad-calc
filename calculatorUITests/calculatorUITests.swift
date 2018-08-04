@@ -8,7 +8,7 @@
 
 import XCTest
 
-class calculatorUITests: XCTestCase {
+final class calculatorUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

@@ -9,7 +9,7 @@
 import XCTest
 @testable import calculator
 
-class calculatorTests: XCTestCase {
+final class calculatorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

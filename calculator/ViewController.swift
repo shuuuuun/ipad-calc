@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     enum OperatorType: Int {
         case none
         case dividedBy
@@ -16,32 +16,45 @@ class ViewController: UIViewController {
         case minus
         case plus
     }
-    var viewerNum:String = "0"
-    var operand1:Double = 0
-    var operand2:Double = 0
-    var operatorType:OperatorType = .none
-    var lastOperand2:Double = 0
-    var lastOperatorType:OperatorType = .none
+    var viewerNum: String = "0"
+    var operand1: Double = 0
+    var operand2: Double = 0
+    var operatorType: OperatorType = .none
+    var lastOperand2: Double = 0
+    var lastOperatorType: OperatorType = .none
 
     @IBOutlet weak var label: UILabel!
 
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
         let clickedNumStr = String(sender.tag)
         if !isCalculating() {
-            if hasExponent(String(operand1)) { return }
+            if hasExponent(target: String(operand1)) { return }
             let isZero = operand1 == 0
-            let currentNumStr = hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(operand1))
+            let currentNumStr = hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(num: operand1))
             let numStr = currentNumStr + clickedNumStr
-            operand1 = Double(numStr)!
+            if let unwrapped = Double(numStr) {
+                operand1 = unwrapped
+            }
+            else {
+                operand1 = 0
+            }
             viewerNum = numStr
         }
         else {
-            if hasExponent(String(operand2)) { return }
-            let isShowingOperand1 = operand1 == Double(viewerNum)!
+            if hasExponent(target: String(operand2)) { return }
+            var isShowingOperand1: Bool = false
+            if let unwrapped = Double(viewerNum) {
+                isShowingOperand1 = operand1 == unwrapped
+            }
             let isZero = operand2 == 0
-            let currentNumStr = !isShowingOperand1 && hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(operand2))
+            let currentNumStr = !isShowingOperand1 && hasDotInViewer() ? viewerNum : (isZero ? "" : doubleToString(num: operand2))
             let numStr = currentNumStr + clickedNumStr
-            operand2 = Double(numStr)!
+            if let unwrapped = Double(numStr) {
+                operand2 = unwrapped
+            }
+            else {
+                operand2 = 0
+            }
             viewerNum = numStr
         }
         label.text = viewerNum
@@ -69,22 +82,22 @@ class ViewController: UIViewController {
     @IBAction func btnSignOnClicked(_ sender: UIButton) {
         if !isCalculating() {
             operand1 *= -1
-            drawNum(operand1)
+            drawNum(num: operand1)
         }
         else {
             operand2 *= -1
-            drawNum(operand2)
+            drawNum(num: operand2)
         }
     }
 
     @IBAction func btnPercentOnClicked(_ sender: UIButton) {
         if !isCalculating() {
             operand1 /= 100
-            drawNum(operand1)
+            drawNum(num: operand1)
         }
         else {
             operand2 /= 100
-            drawNum(operand2)
+            drawNum(num: operand2)
         }
     }
 
@@ -101,16 +114,16 @@ class ViewController: UIViewController {
         else {
             // repeat equal
             if lastOperatorType != .none {
-                let result = calc(operand1, lastOperatorType, lastOperand2)
-                drawNum(result)
+                let result = calc(operand1: operand1, operatorType: lastOperatorType, operand2: lastOperand2)
+                drawNum(num: result)
                 operand1 = result
             }
         }
     }
 
-    func doubleToString(_ num:Double) -> (String) {
-        let str:String
-        if hasExponent(String(num)) {
+    private func doubleToString(num: Double) -> String {
+        let str: String
+        if hasExponent(target: String(num)) {
             str = String(num)
         }
         else if num == floor(num) {
@@ -123,18 +136,18 @@ class ViewController: UIViewController {
         return str
     }
 
-    func drawNum(_ num: Double) {
-        viewerNum = doubleToString(num)
+    private func drawNum(num: Double) {
+        viewerNum = doubleToString(num: num)
         label.text = viewerNum
     }
 
-    func isCalculating() -> (Bool) {
+    private func isCalculating() -> Bool {
         return operatorType != .none
     }
 
-    func doCalc() {
-        let result = calc(operand1, operatorType, operand2)
-        drawNum(result)
+    private func doCalc() {
+        let result = calc(operand1: operand1, operatorType: operatorType, operand2: operand2)
+        drawNum(num: result)
         lastOperand2 = operand2
         lastOperatorType = operatorType
         operand1 = result
@@ -142,7 +155,7 @@ class ViewController: UIViewController {
         operatorType = .none
     }
 
-    func calc(_ operand1: Double, _ operatorType: OperatorType, _ operand2: Double) -> (Double) {
+    private func calc(operand1: Double, operatorType: OperatorType, operand2: Double) -> Double {
         // NSLog(String(operand1) + ", " + String(operatorType) + ", " + String(operand2))
         switch operatorType {
             case .dividedBy:
@@ -158,15 +171,15 @@ class ViewController: UIViewController {
         }
     }
 
-    func hasExponent(_ target: String) -> Bool {
+    private func hasExponent(target: String) -> Bool {
         return regexpMatch(target: target, pattern: "e")
     }
 
-    func hasDotInViewer() -> Bool {
+    private func hasDotInViewer() -> Bool {
         return regexpMatch(target: viewerNum, pattern: "\\.")
     }
 
-    func regexpMatch(target: String, pattern: String, options: NSRegularExpression.Options = []) -> Bool {
+    private func regexpMatch(target: String, pattern: String, options: NSRegularExpression.Options = []) -> Bool {
         guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else {
             return false
         }
