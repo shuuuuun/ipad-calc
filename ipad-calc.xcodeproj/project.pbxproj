@@ -443,7 +443,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mtkshn.calculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuuuuun.calculator;
 				PRODUCT_NAME = "ipad-calc-dev";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -464,7 +464,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mtkshn.calculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuuuuun.calculator;
 				PRODUCT_NAME = "ipad-calc";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
