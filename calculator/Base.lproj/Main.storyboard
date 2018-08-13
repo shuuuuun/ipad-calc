@@ -404,7 +404,7 @@
                                             <action selector="btnEqualOnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KwG-B4-zwd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aU-pt-yln" customClass="BackgroundHighlightedButton" customModule="ipad_calc" customModuleProvider="target">
+                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aU-pt-yln" customClass="BackgroundHighlightedButton" customModule="ipad_calc" customModuleProvider="target">
                                         <rect key="frame" x="192" y="588" width="191.5" height="145.5"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="60"/>

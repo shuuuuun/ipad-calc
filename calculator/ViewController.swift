@@ -26,7 +26,10 @@ final class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
 
     @IBAction func btnNumbersOnClicked(_ sender: UIButton) {
-        let clickedNumStr = String(sender.tag)
+        var clickedNumStr = String(sender.tag)
+        if clickedNumStr == "10" {
+            clickedNumStr = "00"
+        }
         if !isCalculating() {
             if hasExponent(target: String(operand1)) { return }
             let isZero = operand1 == 0
